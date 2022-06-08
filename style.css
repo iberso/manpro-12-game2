@@ -1,0 +1,436 @@
+body {
+    font-family: 'Changa', sans-serif !important;
+    user-select: none;
+    background-color: #3a2e2e !important;
+    color: white !important;
+}
+
+.boardBase {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    height: 520px;
+    width: 520px;
+    background-color: #f0e7dc;
+    border-radius: 10px;
+    outline: solid #523322 5pt;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 1);
+}
+
+.boardBase div {
+    user-select: none;
+    /* line-height: 60px; */
+    height: 65px;
+    width: 65px;
+    font-size: 15pt;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+    padding: 5px;
+    color: black;
+}
+
+.boardBase div img {
+    width: auto;
+    margin: auto;
+}
+
+.can-move img {
+    background-color: #ffffffca;
+    outline: solid #ffffff 2px;
+    padding: 2px;
+    border-radius: 8px;
+}
+
+.eat-move img {
+    background-color: #ff2929c9;
+    outline: solid #9e23236e 2px;
+    padding: 2px;
+    border-radius: 8px;
+}
+
+.color {
+    /* background-color: #ffdf61; */
+    background-color: #a86d4c;
+}
+
+.selected img {
+    /* background-color: #a8a8a8fb; */
+    background-color: #a8a8a8fb;
+    outline: solid #535353fb 2px;
+    padding: 2px;
+    border-radius: 8px;
+}
+
+.valid-move {
+    background-color: #b1ff3b;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.container-item span {
+    font-size: 20pt;
+}
+
+ul {
+    margin: auto;
+    height: 260px;
+    width: 300px;
+    overflow: hidden;
+    overflow-y: scroll;
+    outline: solid #523322 5pt;
+    border-radius: 5px;
+    color: black;
+    background-color: #f0e7dc;
+}
+
+li {
+    padding: 8px;
+    list-style-type: decimal;
+    border-bottom: 1px solid rgb(148, 148, 148);
+}
+
+.boardBase img {
+    /* border-radius: 2px; */
+}
+
+.count-down {
+    color: #f83030;
+}
+
+.rotateBoard180 {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+
+/* ============== */
+
+.svg-box {
+    display: inline-block;
+    position: relative;
+    width: 150px;
+}
+
+.green-stroke {
+    stroke: #7CB342;
+}
+
+.red-stroke {
+    stroke: #FF6245;
+}
+
+.yellow-stroke {
+    stroke: #FFC107;
+}
+
+.circular circle.path {
+    stroke-dasharray: 330;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    opacity: 0.4;
+    animation: 0.7s draw-circle ease-out;
+}
+
+
+/*------- Checkmark ---------*/
+
+.checkmark {
+    stroke-width: 6.25;
+    stroke-linecap: round;
+    position: absolute;
+    top: 56px;
+    left: 49px;
+    width: 52px;
+    height: 40px;
+}
+
+.checkmark path {
+    animation: 1s draw-check ease-out;
+}
+
+@keyframes draw-circle {
+    0% {
+        stroke-dasharray: 0, 330;
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+    80% {
+        stroke-dasharray: 330, 330;
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes draw-check {
+    0% {
+        stroke-dasharray: 49, 80;
+        stroke-dashoffset: 48;
+        opacity: 0;
+    }
+    50% {
+        stroke-dasharray: 49, 80;
+        stroke-dashoffset: 48;
+        opacity: 1;
+    }
+    100% {
+        stroke-dasharray: 130, 80;
+        stroke-dashoffset: 48;
+    }
+}
+
+
+/*---------- Cross ----------*/
+
+.cross {
+    stroke-width: 6.25;
+    stroke-linecap: round;
+    position: absolute;
+    top: 54px;
+    left: 54px;
+    width: 40px;
+    height: 40px;
+}
+
+.cross .first-line {
+    animation: 0.7s draw-first-line ease-out;
+}
+
+.cross .second-line {
+    animation: 0.7s draw-second-line ease-out;
+}
+
+@keyframes draw-first-line {
+    0% {
+        stroke-dasharray: 0, 56;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 0, 56;
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dasharray: 56, 330;
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes draw-second-line {
+    0% {
+        stroke-dasharray: 0, 55;
+        stroke-dashoffset: 1;
+    }
+    50% {
+        stroke-dasharray: 0, 55;
+        stroke-dashoffset: 1;
+    }
+    100% {
+        stroke-dasharray: 55, 0;
+        stroke-dashoffset: 70;
+    }
+}
+
+.alert-sign {
+    stroke-width: 6.25;
+    stroke-linecap: round;
+    position: absolute;
+    top: 40px;
+    left: 68px;
+    width: 15px;
+    height: 70px;
+    animation: 0.5s alert-sign-bounce cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.alert-sign .dot {
+    stroke: none;
+    fill: #FFC107;
+}
+
+@keyframes alert-sign-bounce {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.rotate-180-cw {
+    -webkit-animation: rotate-180-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: rotate-180-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-5-21 13:54:46
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+
+/**
+ * ----------------------------------------
+ * animation rotate-90-cw
+ * ----------------------------------------
+ */
+
+@-webkit-keyframes rotate-180-cw {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes rotate-180-cw {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+.scale-in-ver-center {
+    -webkit-animation: scale-in-ver-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: scale-in-ver-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-6-3 12:26:29
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+
+/**
+ * ----------------------------------------
+ * animation scale-in-ver-center
+ * ----------------------------------------
+ */
+
+@-webkit-keyframes scale-in-ver-center {
+    0% {
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scale-in-ver-center {
+    0% {
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+.wobble-hor-bottom {
+    -webkit-animation: wobble-hor-bottom 1s 0.9s infinite both;
+    animation: wobble-hor-bottom 1s 0.9s infinite both;
+}
+
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-6-3 12:28:40
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+
+/**
+ * ----------------------------------------
+ * animation wobble-hor-bottom
+ * ----------------------------------------
+ */
+
+@-webkit-keyframes wobble-hor-bottom {
+    0%,
+    100% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+    }
+    15% {
+        -webkit-transform: translateX(-30px) rotate(-6deg);
+        transform: translateX(-30px) rotate(-6deg);
+    }
+    30% {
+        -webkit-transform: translateX(15px) rotate(6deg);
+        transform: translateX(15px) rotate(6deg);
+    }
+    45% {
+        -webkit-transform: translateX(-15px) rotate(-3.6deg);
+        transform: translateX(-15px) rotate(-3.6deg);
+    }
+    60% {
+        -webkit-transform: translateX(9px) rotate(2.4deg);
+        transform: translateX(9px) rotate(2.4deg);
+    }
+    75% {
+        -webkit-transform: translateX(-6px) rotate(-1.2deg);
+        transform: translateX(-6px) rotate(-1.2deg);
+    }
+}
+
+@keyframes wobble-hor-bottom {
+    0%,
+    100% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+    }
+    15% {
+        -webkit-transform: translateX(-30px) rotate(-6deg);
+        transform: translateX(-30px) rotate(-6deg);
+    }
+    30% {
+        -webkit-transform: translateX(15px) rotate(6deg);
+        transform: translateX(15px) rotate(6deg);
+    }
+    45% {
+        -webkit-transform: translateX(-15px) rotate(-3.6deg);
+        transform: translateX(-15px) rotate(-3.6deg);
+    }
+    60% {
+        -webkit-transform: translateX(9px) rotate(2.4deg);
+        transform: translateX(9px) rotate(2.4deg);
+    }
+    75% {
+        -webkit-transform: translateX(-6px) rotate(-1.2deg);
+        transform: translateX(-6px) rotate(-1.2deg);
+    }
+}
