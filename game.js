@@ -15,7 +15,7 @@ let change = false,
 //timer
 let firstmove = false,
     timesup = false,
-    duration = 60 * 5,
+    duration = 60 * 0.3,
     minutes, seconds;
 
 let countdown = setInterval(() => {
@@ -188,7 +188,8 @@ function checkWins(_board) {
         if (document.querySelectorAll('.white-pion').length === document.querySelectorAll('.color-pion').length && (!gameState.player[0].firstKing && !gameState.player[1].firstKing)) {
             document.getElementById('alertModalBody').innerHTML = "<h2>" + winResult(_board).PionWin + "</h2><p style='font-size:70pt;'>🤝</p>";
         } else {
-            document.getElementById('alertModalBody').innerHTML = "<h2>" + winResult(_board).PionWin + " Win</h2><p style='font-size:70pt;'>🎉</p>";
+            let tampilscore = gameState.player[0].score > gameState.player[1].score ? gameState.player[0].score : gameState.player[1].score;
+            document.getElementById('alertModalBody').innerHTML = "<h2>" + winResult(_board).PionWin + " Win</h2><p style='font-size:70pt;'>🎉</p>" + "<h2> Score : " + tampilscore + "</h2>";
         }
         stoptimer();
         myModal.show();
